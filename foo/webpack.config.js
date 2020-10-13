@@ -26,12 +26,11 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: 'foo',
-      library: { type: 'var', name: 'foo' },
       filename: 'remoteEntry.js',
       exposes: {
         './Foo': './src/App',
       },
-      shared: ['react', 'react-dom'],
+      shared: [{ react: { singleton: true } }],
     }),
   ],
 };
