@@ -1,12 +1,16 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const path = require('path');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/App.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
   mode: 'development',
   devServer: {
     historyApiFallback: true,
+    port: 3001,
   },
   module: {
     rules: [
@@ -20,17 +24,13 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
-    }),
     new ModuleFederationPlugin({
-      name: 'shell',
+      name: 'bar',
       filename: 'remoteEntry.js',
-      remotes: {
-        foo: 'foo@http://localhost:3000/remoteEntry.js',
-        bar: 'bar@http://localhost:3001/remoteEntry.js',
+      exposes: {
+        './Bar': './src/App',
       },
-      shared: ['react', 'react-dom', 'styled-components'],
+      shared: [{ react: { singleton: true } }, 'styled-components'],
     }),
   ],
 };

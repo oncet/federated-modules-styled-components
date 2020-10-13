@@ -7,6 +7,7 @@ import {
 import Header from './components/Header';
 
 const Foo = React.lazy(() => import('foo/Foo'));
+const Bar = React.lazy(() => import('bar/Bar'));
 
 const App = () => (
   <Router>
@@ -15,6 +16,11 @@ const App = () => (
       <Route path="/foo">
         <Suspense fallback={'Loading...'}>
           <Foo />
+        </Suspense>
+      </Route>
+      <Route path="/bar">
+        <Suspense fallback={'Loading...'}>
+          <Bar />
         </Suspense>
       </Route>
       <Route path="/">

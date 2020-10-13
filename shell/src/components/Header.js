@@ -15,6 +15,9 @@ const Header = () => (
       <li>
         <Link to="/foo">Foo</Link>
       </li>
+      <li>
+        <Link to="/bar">Bar</Link>
+      </li>
     </StyledUl>
   </nav>
 );
