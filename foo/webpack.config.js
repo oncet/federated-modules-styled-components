@@ -6,11 +6,11 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: 'http://localhost:8080/',
   },
   mode: 'development',
   devServer: {
     historyApiFallback: true,
+    port: 3000,
   },
   module: {
     rules: [
@@ -18,7 +18,7 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
         }
       }
     ]
@@ -30,7 +30,7 @@ module.exports = {
       exposes: {
         './Foo': './src/App',
       },
-      shared: [{ react: { singleton: true } }],
+      shared: [{ react: { singleton: true } }, 'styled-components'],
     }),
   ],
 };

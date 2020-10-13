@@ -14,7 +14,7 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
         }
       }
     ]
@@ -27,9 +27,9 @@ module.exports = {
       name: 'shell',
       filename: 'remoteEntry.js',
       remotes: {
-        foo: 'foo@http://localhost:8080/remoteEntry.js',
+        foo: 'foo@http://localhost:3000/remoteEntry.js',
       },
-      shared: ['react', 'react-dom'],
+      shared: ['react', 'react-dom', 'styled-components'],
     }),
   ],
 };
