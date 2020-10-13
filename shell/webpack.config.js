@@ -25,10 +25,9 @@ module.exports = {
     }),
     new ModuleFederationPlugin({
       name: 'shell',
-      library: { type: 'var', name: 'shell' },
       filename: 'remoteEntry.js',
       remotes: {
-        'foo': 'foo',
+        foo: 'foo@http://localhost:8080/remoteEntry.js',
       },
       shared: ['react', 'react-dom'],
     }),
